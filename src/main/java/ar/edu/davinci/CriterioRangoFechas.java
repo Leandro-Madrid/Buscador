@@ -3,15 +3,11 @@ package ar.edu.davinci;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CriterioRangoFechas implements CriterioBusqueda {
+
+public class CriterioRangoFechas implements CriterioBusqueda<String[]> {
+
     @Override
-    public List<PaginaWeb> buscar(List<PaginaWeb> paginas, Object criterio) {
-        if (!(criterio instanceof String[])) {
-            throw new IllegalArgumentException("El valor debe ser un arreglo de tipo String");
-        }
-
-        String[] rangoFechas = (String[]) criterio;
-
+    public List<PaginaWeb> buscar(List<PaginaWeb> paginas, String[] rangoFechas) {
         return paginas.stream()
                 .filter(pagina -> pagina.getArticulos().stream()
                         .anyMatch(articulo -> {

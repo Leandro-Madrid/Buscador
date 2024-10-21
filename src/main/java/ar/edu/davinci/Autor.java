@@ -11,4 +11,3 @@ public class Autor {
         return nombre;
     }
 }
-
